@@ -2,7 +2,7 @@ Instagroom::Application.routes.draw do
   resources :users do
     resources :posts
   end
-get "users/:username/posts", to: "Posts#index"
+post "users/login", to: "Users#login"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
