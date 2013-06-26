@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_filter :get_user
+  before_filter :get_user, :authenticate
   def get_user
   if params[:username]
     @user = User.find_by_username(params[:username])
