@@ -16,5 +16,8 @@ def login
         cookies[:user_token] = @user.token
       end
     end
+    respond_to do |format|
+      format.html
+    end
   end
 end
