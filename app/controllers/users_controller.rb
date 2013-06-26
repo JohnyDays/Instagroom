@@ -17,7 +17,7 @@ def login
       end
     end
     respond_to do |format|
-      format.html
+      format.html{redirect_to "/users/" << @user.id << "/posts"}
     end
   end
 end
