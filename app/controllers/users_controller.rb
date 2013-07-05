@@ -16,6 +16,11 @@ def login
         cookies[:user_token] = @user.token
       end
     end
+    if @user
     redirect_to user_posts_path(@user)
+    else
+    flash[:error] = "Your username or password is wrong, sorry!"
+    redirect_to users_path
+  end
   end
 end

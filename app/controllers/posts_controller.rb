@@ -16,4 +16,9 @@ end
       format.xml { render :xml => @posts.to_xml }
     end
   end
+  def new
+  end
+  def create
+
+  end
 end
