@@ -13,7 +13,7 @@ end
   def authenticateOwnership(userid)
     authenticate
    if @currentuser.id != userid
-     flash[:error] = "You do not have permission to delete this Object."
+     flash[:error] = "You do not have permission to acess this."
         redirect_to "root" # or wherever you want to redirect to
   end
 end
