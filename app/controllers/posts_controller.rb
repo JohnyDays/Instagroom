@@ -17,7 +17,13 @@ end
     end
   end
   def new
+    @post = Post.new
+    @post.user_id = @user.id
   end
   def create
+      uploaded_io = params[:post][:file]
+  File.open(Rails.root.join('public', 'uploads',uploaded_io.original_filename), 'wb') do |file|
+    file.write(uploaded_io.read)
+  end
   end
 end
