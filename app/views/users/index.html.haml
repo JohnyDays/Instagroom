@@ -1,0 +1,22 @@
+
+- flash.each do |key, value|
+    .alert{ :class => "alert-#{key}" }
+        %button.close{ :onclick => "dismiss(this)" } x
+        %strong
+            = value
+.row
+    %h1.offset2 Instagroom
+%hr
+-unless @currentuser
+    = render 'login'
+-else
+    %p.lead
+        Hi
+        %strong
+            = @currentuser.username
+        you probably want to go to your
+        = link_to("posts", user_posts_path(@currentuser))
+        Or maybe
+        = link_to("logout",logout_path)
+
+

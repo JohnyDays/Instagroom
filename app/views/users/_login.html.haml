@@ -1,0 +1,13 @@
+.row
+    .span3.well
+        %form{ action: "/users", method: "post"}
+            %input.span3{name: "user[email]", placeholder: "Email", type: "text" }
+            %input.span3{name: "user[username]", placeholder: "Username" ,type: "text" }
+            %input.span3{name: "user[password]", placeholder: "Password" ,type: "password" }
+            %button.btn.btn-warning#signup{type: "submit"} Sign up
+    %vr
+    .span3.well
+        %form{ action: "/users/login", method: "post"}
+            %input.span3{name: "username", placeholder: "Username" ,type: "text" }
+            %input.span3{name: "password", placeholder: "Password" ,type: "password" }
+            %button.btn.btn-warning{type: "submit"} Login

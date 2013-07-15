@@ -1,0 +1,31 @@
+:javascript
+    function desaturate(img) {
+       var img2 = Pixastic.process($("#imagepreview")[0], "desaturate");
+       img2.onmouseout = function() {
+      Pixastic.revert(this);
+        }
+      }
+    $(document).ready(function()
+     {
+       $("#submit").click(function() {
+       });
+        });
+= form_for @post,url: {action: "create"},:html => { :multipart => true} do |f|
+    %fieldset
+        %legend Post something to Instagroom!
+        %br
+        %row
+            %img{:src=>"http://placehold.it/500x350",:id =>"imagepreview",:style=>"padding:10"}
+            %button.btn.btn-info{:type =>"button",:id =>"filebutton",:name =>"filebutton",:onclick=>"click()", :style => "width : 100%;margin-bottom:20px"} Please choose an image
+        %br
+        %input.input-xlarge{:id => "content",:name=>"post[content]",:type=>"text",:placeholder=>"say something :D",:style => "width : 100%"}
+        %br
+        %label.radio.inline{:for => "sepia"}
+            %input{:id => "sepia",:name=>"effects",:type=>"radio",:value=>"sepia"}
+            Sepia
+        %label.radio.inline{:for => "grayscale"}
+            %input{:id => "grayscale",:name=>"effects",:type=>"radio",:value=>"grayscale", :onchange=>"desaturate()"}
+            Grayscale
+        %br
+        %input.input-file{:type => "file",:name =>"file",:id =>"post_file",:style => "width : 100%",:onchange =>"readURL(this);"}
+        %button.btn.btn-success#submit{:type =>"submit"} Post
