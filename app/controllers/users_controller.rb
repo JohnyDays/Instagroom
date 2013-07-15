@@ -8,7 +8,9 @@ def create
     respond_to do |format|
       format.html
       format.json{render @user.to_json}
+
     end
+
 end
 
 def login
@@ -30,7 +32,6 @@ def logout
     if @currentuser or cookies[:user_token]
     cookies.delete :user_token
     @currentuser = nil
-    flash[:notice] = "zabazix"
   end
   flash[:success] = "You have been logged out"
   redirect_to users_path

@@ -1,11 +1,9 @@
 Instagroom::Application.routes.draw do
-match '/users/:userid', to: redirect("/users/%{userid}/posts")
   resources :users do
     resources :posts
   end
-
+post 'login', to: "Users#login", as:'login'
 match 'logout' , to: 'Users#logout', as: 'logout'
-post "users/login", to: "Users#login"
 root :to => "users#index"
   # The priority is based upon order of creation:
   # first created -> highest priority.

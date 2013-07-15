@@ -6,9 +6,11 @@
 .row{:style => "display:inline-block"}
     %h1.page-header.offset4{:style => "display:inline-block"}= @user.username
     = link_to "Post", new_user_post_path(@user), :style => "display:inline-block", :class => "btn btn-info offset5"
+    = link_to "Logout",logout_path, :style => "display:inline-block", :class => "btn btn-danger "
 %section#posts
     %ul.thumbnails
         - @posts.each do |post|
             .well
                 = render partial: "post", object: post
+            %hr
 
