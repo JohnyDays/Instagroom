@@ -2,9 +2,9 @@ class PostsController < ApplicationController
   before_filter :get_user, :authenticate
   def get_user
   if params[:username]
-    @user = User.find_by_username(params[:username])
+    @user = User.find_by_username params[:username]
   else
-    @user = User.find(params[:user_id])
+    @user = User.find params[:user_id]
   end
 end
 
@@ -21,9 +21,15 @@ end
     @post.user_id = @user.id
   end
   def create
-      uploaded_io = params[:post][:file]
-  File.open(Rails.root.join('public', 'uploads',uploaded_io.original_filename), 'wb') do |file|
-    file.write(uploaded_io.read)
+    @post = Post.new(params[:post])
+    @post.user_id = currentuser.id
+    @post.source_id = currentuser.id
+    @post.save
+    @uploaded_io = params[:file]
+    Dir.mkdir(Rails.root.join('public', 'uploads',currentuser.username)) unless File.exists?(Rails.root.join('public', 'uploads',currentuser.username))
+    Dir.mkdir(Rails.root.join('public', 'uploads',currentuser.username,@post.id.to_s))
+    File.open(Rails.root.join('public', 'uploads',currentuser.username,@post.id.to_s,"image"),"wb") do |file|
+    file.write(@uploaded_io.read)
   end
   end
 end

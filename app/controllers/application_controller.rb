@@ -10,6 +10,9 @@ end
     redirect_to "/"
   end
 end
+def currentuser
+ User.find_by_token(cookies[:user_token])
+end
   def authenticateOwnership(userid)
     authenticate
    if @currentuser.id != userid

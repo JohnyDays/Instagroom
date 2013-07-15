@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
-
+def index
+  @currentuser = currentuser
+end
 def create
 @user = User.new(params[:user])
 @user.save
@@ -13,7 +15,8 @@ def login
     @user = User.find_by_username(params[:username])
     if  @user
       if @user.password == params[:password]
-        cookies[:user_token] = @user.token
+        cookies.permanent[:user_token] = @user.token
+        authenticate
       end
     end
     if @user
@@ -23,4 +26,13 @@ def login
     redirect_to users_path
   end
   end
+def logout
+    if @currentuser or cookies[:user_token]
+    cookies.delete :user_token
+    @currentuser = nil
+    flash[:notice] = "zabazix"
+  end
+  flash[:success] = "You have been logged out"
+  redirect_to users_path
+end
 end
