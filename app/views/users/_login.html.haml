@@ -1,13 +1,19 @@
-.row
+.row{:style => "display:inline-block"}
+    .span3.well
+        %form{ action: "/login", method: "post"}
+            %legend Login to Instagroom
+            %input.span3{name: "username", placeholder: "Username" ,type: "text" }
+            %input.span3{name: "password", placeholder: "Password" ,type: "password" }
+            Remember me?
+            %input{:type => "checkbox", :name =>"remember"}
+            %br
+            %a Forgot your password?
+            %button.btn.btn-info{type: "submit"} Login
     .span3.well
         %form{ action: "/users", method: "post"}
+            %legend Sign up to instagroom
             %input.span3{name: "user[email]", placeholder: "Email", type: "text" }
             %input.span3{name: "user[username]", placeholder: "Username" ,type: "text" }
             %input.span3{name: "user[password]", placeholder: "Password" ,type: "password" }
-            %button.btn.btn-warning#signup{type: "submit"} Sign up
-    %vr
-    .span3.well
-        %form{ action: "/login", method: "post"}
-            %input.span3{name: "username", placeholder: "Username" ,type: "text" }
-            %input.span3{name: "password", placeholder: "Password" ,type: "password" }
-            %button.btn.btn-warning{type: "submit"} Login
+            %button.btn.btn-info#signup{type: "submit"} Sign up
+

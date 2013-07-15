@@ -17,7 +17,8 @@ def login
     @user = User.find_by_username(params[:username])
     if  @user
       if @user.password == params[:password]
-        cookies.permanent[:user_token] = @user.token
+        cookies.permanent[:user_token] = @user.token if params[:remember]
+        cookies[:user_token] = @user.token unless params[:remember]
         authenticate
       end
     end

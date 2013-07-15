@@ -1,5 +1,5 @@
 function dismiss(element)
 {
-  $(element).parent().hide()
+  $(element).parent().remove()
 }
 
