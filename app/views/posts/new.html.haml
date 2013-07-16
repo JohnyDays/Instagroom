@@ -1,12 +1,24 @@
 :javascript
-    function desaturate(img) {
-       var img2 = Pixastic.process($("#imagepreview")[0], "desaturate");
-       img2.onmouseout = function() {
-      Pixastic.revert(this);
-        }
+    var pixastic = undefined;
+    function none(img)
+    {
+    if(pixastic)
+    Pixastic.revert(pixastic)
+    }
+    function sepia(img) {
+        if(pixastic)
+       Pixastic.revert(pixastic)
+        var img2 = Pixastic.process($("#imagepreview")[0], "sepia");
+        pixastic = img2;
+      }
+        function grayscale(img) {
+        if(pixastic)
+       Pixastic.revert(pixastic)
+        var img2 = Pixastic.process($("#imagepreview")[0], "desaturate");
+        pixastic = img2;
       }
       var temp;
-    $(document).ready(function()
+     $(document).ready(function()
      {
        $("#submit").click(function() {
        var oMyForm = new FormData($("#new_post")[0]);
@@ -50,11 +62,14 @@
         %input.input-xlarge{:id => "content",:name=>"post[content]",:type=>"text",:placeholder=>"say something :D",:style => "width : 100%"}
         %br
         %label.radio.inline{:for => "sepia"}
-            %input{:id => "sepia",:name=>"effects",:type=>"radio",:value=>"sepia"}
+            %input{:id => "sepiaradio",:name=>"effects",:type=>"radio",:value=>"sepia",:onchange=>"sepia()"}
             Sepia
         %label.radio.inline{:for => "grayscale"}
-            %input{:id => "grayscale",:name=>"effects",:type=>"radio",:value=>"grayscale", :onchange=>"desaturate()"}
+            %input{:id => "grayscaleradio",:name=>"effects",:type=>"radio",:value=>"grayscale", :onchange=>"grayscale()"}
             Grayscale
+        %label.radio.inline{:for => "grayscale"}
+            %input{:id => "noneradio",:name=>"effects",:type=>"radio",:value=>"none", :onchange=>"none()"}
+            None
         %br
 
         %button.btn.btn-shinyblue#submit{:type =>"button", :style => "margin-top:30px"} Post It to your Instagroom page and share!
