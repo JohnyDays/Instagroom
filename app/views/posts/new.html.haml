@@ -5,6 +5,19 @@
     if(pixastic)
     Pixastic.revert(pixastic)
     }
+    function laplace(img){
+    if(pixastic)
+       Pixastic.revert(pixastic)
+        var img2 = Pixastic.process($("#imagepreview")[0], "laplace", {edgeStrength:4.3,invert:false,greyLevel:0});
+        pixastic = img2;
+
+    }
+    function glow(img) {
+        if(pixastic)
+       Pixastic.revert(pixastic)
+        var img2 = Pixastic.process($("#imagepreview")[0], "glow", {amount:0.34,radius:1.0});
+        pixastic = img2;
+      }
     function sepia(img) {
         if(pixastic)
        Pixastic.revert(pixastic)
@@ -67,9 +80,16 @@
         %label.radio.inline{:for => "grayscale"}
             %input{:id => "grayscaleradio",:name=>"effects",:type=>"radio",:value=>"grayscale", :onchange=>"grayscale()"}
             Grayscale
-        %label.radio.inline{:for => "grayscale"}
+        %label.radio.inline{:for => "glow"}
+            %input{:id => "glowradio",:name=>"effects",:type=>"radio",:value=>"none", :onchange=>"glow()"}
+            Glow
+        %label.radio.inline{:for => "laplace"}
+            %input{:id => "laplaceradio",:name=>"effects",:type=>"radio",:value=>"none", :onchange=>"laplace()"}
+            Laplace
+        %label.radio.inline{:for => "none"}
             %input{:id => "noneradio",:name=>"effects",:type=>"radio",:value=>"none", :onchange=>"none()"}
             None
+
         %br
 
         %button.btn.btn-shinyblue#submit{:type =>"button", :style => "margin-top:30px"} Post It to your Instagroom page and share!
