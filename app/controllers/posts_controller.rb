@@ -9,7 +9,7 @@ class PostsController < ApplicationController
 end
 
   def index
-    @posts = @user.posts
+    @posts = @user.posts.order("created_at DESC")
     respond_to do |format|
       format.html
       format.json {render :json => @posts.to_json}

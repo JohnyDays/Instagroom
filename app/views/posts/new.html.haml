@@ -15,8 +15,12 @@
         %legend Post something to Instagroom!
         %br
         %row
-            %img{:src=>"http://placehold.it/500x350",:id =>"imagepreview",:style=>"padding:10"}
-            %button.btn.btn-info{:type =>"button",:id =>"filebutton",:name =>"filebutton",:onclick=>"click()", :style => "width : 100%;margin-bottom:20px"} Please choose an image
+            %img{:src=>"http://placehold.it/500x350",:id =>"imagepreview",:style=>"margin-bottom:30px"}
+            %div.file-input{:style => "position:relative"}
+                %input.input-file{:type => "file",:name =>"file",:id =>"post_file",:onchange =>"readURL(this);",:style => "position:relative;width : 100%;z-index:2;opacity:0"}
+                %div.fake-file-input{:style => "position:relative;position:absolute;top:0px;left:0px;width:100%"}
+                    %button.btn.btn-info{:type =>"button",:id =>"filebutton",:name =>"filebutton",:onclick=>"click()", :style => "width : 100%;margin-bottom:20px"} Please choose an image
+
         %br
         %input.input-xlarge{:id => "content",:name=>"post[content]",:type=>"text",:placeholder=>"say something :D",:style => "width : 100%"}
         %br
@@ -27,5 +31,5 @@
             %input{:id => "grayscale",:name=>"effects",:type=>"radio",:value=>"grayscale", :onchange=>"desaturate()"}
             Grayscale
         %br
-        %input.input-file{:type => "file",:name =>"file",:id =>"post_file",:style => "width : 100%",:onchange =>"readURL(this);"}
+
         %button.btn.btn-success#submit{:type =>"submit"} Post
