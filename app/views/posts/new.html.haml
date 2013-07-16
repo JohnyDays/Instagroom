@@ -11,22 +11,28 @@
        $("#submit").click(function() {
        var oMyForm = new FormData($("#new_post")[0]);
         var oReq = new XMLHttpRequest();
+        if($('canvas')[0]){
+              if ($('canvas')[0].toBlob) {
+      $('canvas')[0].toBlob(
+        function (blob) {
 
+            oMyForm.append("file", blob);
+        },
+        'image/jpeg'
+          );
+        }}
         oReq.open("POST", "/users/1/posts");
         oReq.onload = function(){
-        temp = oReq
-        console.log(oReq.responseText)
         var oBlob = new Blob([oReq.response], { type: "text/html"})
-        console.log(oBlob)
         objectURL = window.URL.createObjectURL(oBlob);
         console.log(objectURL)
         }
         oReq.send(oMyForm);
-
         return false;
        });
        $("#imagepreview").click(fullscreen)
         });
+
 .row{:style => "display:inline-block"}
     %h1.page-header.offset4{:style => "display:inline-block"}= "Post something to Instagroom"
     = link_to "Posts", user_posts_path(@user), :style => "display:inline-block", :class => "btn btn-greenish offset5"
