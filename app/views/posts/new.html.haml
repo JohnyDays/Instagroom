@@ -5,17 +5,36 @@
       Pixastic.revert(this);
         }
       }
+      var temp;
     $(document).ready(function()
      {
        $("#submit").click(function() {
+       var oMyForm = new FormData($("#new_post")[0]);
+        var oReq = new XMLHttpRequest();
+
+        oReq.open("POST", "/users/1/posts");
+        oReq.onload = function(){
+        temp = oReq
+        console.log(oReq.responseText)
+        var oBlob = new Blob([oReq.response], { type: "text/html"})
+        console.log(oBlob)
+        objectURL = window.URL.createObjectURL(oBlob);
+        console.log(objectURL)
+        }
+        oReq.send(oMyForm);
+
+        return false;
        });
+       $("#imagepreview").click(fullscreen)
         });
+.row{:style => "display:inline-block"}
+    %h1.page-header.offset4{:style => "display:inline-block"}= "Post something to Instagroom"
+    = link_to "Posts", user_posts_path(@user), :style => "display:inline-block", :class => "btn btn-greenish offset5"
+    = link_to "Logout",logout_path, :style => "display:inline-block", :class => "btn btn-danger "
 = form_for @post,url: {action: "create"},:html => { :multipart => true} do |f|
     %fieldset
-        %legend Post something to Instagroom!
-        %br
         %row
-            %img{:src=>"http://placehold.it/500x350",:id =>"imagepreview",:style=>"margin-bottom:30px"}
+            %img{:src=>"http://placehold.it/500x350&text=Thumbnail+Size",:id =>"imagepreview",:style=>"margin-bottom:30px"}
             %div.file-input{:style => "position:relative"}
                 %input.input-file{:type => "file",:name =>"file",:id =>"post_file",:onchange =>"readURL(this);",:style => "position:relative;width : 100%;z-index:2;opacity:0"}
                 %div.fake-file-input{:style => "position:relative;position:absolute;top:0px;left:0px;width:100%"}
@@ -32,4 +51,4 @@
             Grayscale
         %br
 
-        %button.btn.btn-success#submit{:type =>"submit"} Post
+        %button.btn.btn-shinyblue#submit{:type =>"button", :style => "margin-top:30px"} Post It to your Instagroom page and share!

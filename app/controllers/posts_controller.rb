@@ -31,5 +31,8 @@ end
     File.open(Rails.root.join('public', 'uploads',currentuser.username,@post.id.to_s,"image"),"wb") do |file|
     file.write(@uploaded_io.read)
   end
+  def repost
+
+  end
   end
 end

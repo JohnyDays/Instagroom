@@ -1,7 +1,8 @@
 
 function fullscreen(element)
 {
-  console.log(element.toElement)
+    console.log(element)
+$('#fullscreenimg').remove()
 var $img = $(element.toElement).clone(),
     imageWidth = $img[0].width,
     imageHeight = $img[0].height,
@@ -19,6 +20,7 @@ if (widthRatio * imageHeight > maxHeight) {
 
 $img.attr('width', imageWidth * ratio)
     .attr('height', imageHeight * ratio)
+    .attr("id", "fullscreenimg")
 $img.click(function()
 {
     $(this).remove()
