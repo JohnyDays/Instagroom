@@ -3,6 +3,12 @@
     {
        $("a.thumbnail img").click(fullscreen)
     });
+.menu{:style => "position:fixed;right:30px;top:100px"}
+    .ul{:style => "-webkit-font-smoothing:antialiased;list-style-type:none;border:1px solid rgba(0,0,0,.18);border-radius:6px;background-color:inherited"}
+        %li{:style => "-webkit-box-shadow:0 0 2px rgba(0,0,0,.25) inset;-box-shadow:0 0 2px rgba(0,0,0,.25) inset"}
+            =link_to "Followers", user_followers_path(@user), :class => "menu-link"
+        %li{:style => "-webkit-box-shadow:0 0 2px rgba(0,0,0,.25) inset;-box-shadow:0 0 2px rgba(0,0,0,.25) inset"}
+            =link_to "Following", user_following_path(@user), :class => "menu-link"
 #container
     - flash.each do |key, value|
         .alert{ :class => "alert-#{key}" }
@@ -21,7 +27,6 @@
     %section#posts
         %ul.thumbnails
             - @posts.each do |post|
-                .well
-                    = render  "post", :post => post, :user => @user
+                = render  "post", :post => post, :user => @user
                 %hr
 

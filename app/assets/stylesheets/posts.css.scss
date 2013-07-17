@@ -1,3 +1,51 @@
 // Place all the styles related to the posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.menu-link{
+-webkit-tap-highlight-color: rgba(26, 26, 26, 0.298039);
+color: rgba(255, 255, 255, 0.690196);
+cursor: pointer;
+display: block;
+font-family: 'Helvetica Neue', HelveticaNeue, Helvetica, Arial, sans-serif;
+font-size: 14px;
+font-style: normal;
+font-variant: normal;
+font-weight: bold;
+height: 19px;
+line-height: 19px;
+list-style-type: none;
+margin-bottom: 0px;
+margin-left: 0px;
+margin-right: 0px;
+margin-top: 0px;
+outline-color: rgba(255, 255, 255, 0.690196);
+outline-style: none;
+outline-width: 0px;
+padding-bottom: 10px;
+padding-left: 40px;
+padding-right: 13px;
+padding-top: 8px;
+position: relative;
+text-align: left;
+text-decoration: none;
+width: 160px;
+zoom: 1;
+}
+.menu-link:hover
+{
+-webkit-tap-highlight-color: rgba(26, 26, 26, 0.298039);
+color: rgba(255, 255, 255, 0.690196);
+cursor: pointer;
+display: block;
+font-family: 'Helvetica Neue', HelveticaNeue, Helvetica, Arial, sans-serif;
+font-size: 14px;
+font-style: normal;
+font-variant: normal;
+font-weight: bold;
+height: 19px;
+line-height: 19px;
+list-style-type: none;
+margin-bottom: 0px;
+margin-left: 0px;
+margin-right: 0px;
+ }
