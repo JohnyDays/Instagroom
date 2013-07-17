@@ -57,39 +57,39 @@
        });
        $("#imagepreview").click(fullscreen)
         });
+#container
+    .row{:style => "display:inline-block"}
+        %h1.page-header.offset4{:style => "display:inline-block"}= "Post something to Instagroom"
+        = link_to "Posts", user_posts_path(@user), :style => "display:inline-block", :class => "btn btn-greenish offset5"
+        = link_to "Logout",logout_path, :style => "display:inline-block", :class => "btn btn-danger "
+    = form_for @post,url: {action: "create"},:html => { :multipart => true} do |f|
+        %fieldset
+            %row
+                %img{:src=>"http://placehold.it/500x350&text=Thumbnail+Size",:id =>"imagepreview",:style=>"margin-bottom:30px"}
+                %div.file-input{:style => "position:relative"}
+                    %input.input-file{:type => "file",:name =>"file",:id =>"post_file",:onchange =>"readURL(this);",:style => "position:relative;width : 100%;z-index:2;opacity:0"}
+                    %div.fake-file-input{:style => "position:relative;position:absolute;top:0px;left:0px;width:100%"}
+                        %button.btn.btn-info{:type =>"button",:id =>"filebutton",:name =>"filebutton",:onclick=>"click()", :style => "width : 100%;margin-bottom:20px"} Please choose an image
 
-.row{:style => "display:inline-block"}
-    %h1.page-header.offset4{:style => "display:inline-block"}= "Post something to Instagroom"
-    = link_to "Posts", user_posts_path(@user), :style => "display:inline-block", :class => "btn btn-greenish offset5"
-    = link_to "Logout",logout_path, :style => "display:inline-block", :class => "btn btn-danger "
-= form_for @post,url: {action: "create"},:html => { :multipart => true} do |f|
-    %fieldset
-        %row
-            %img{:src=>"http://placehold.it/500x350&text=Thumbnail+Size",:id =>"imagepreview",:style=>"margin-bottom:30px"}
-            %div.file-input{:style => "position:relative"}
-                %input.input-file{:type => "file",:name =>"file",:id =>"post_file",:onchange =>"readURL(this);",:style => "position:relative;width : 100%;z-index:2;opacity:0"}
-                %div.fake-file-input{:style => "position:relative;position:absolute;top:0px;left:0px;width:100%"}
-                    %button.btn.btn-info{:type =>"button",:id =>"filebutton",:name =>"filebutton",:onclick=>"click()", :style => "width : 100%;margin-bottom:20px"} Please choose an image
+            %br
+            %input.input-xlarge{:id => "content",:name=>"post[content]",:type=>"text",:placeholder=>"say something :D",:style => "width : 100%"}
+            %br
+            %label.radio.inline{:for => "sepia"}
+                %input{:id => "sepiaradio",:name=>"effects",:type=>"radio",:value=>"sepia",:onchange=>"sepia()"}
+                Sepia
+            %label.radio.inline{:for => "grayscale"}
+                %input{:id => "grayscaleradio",:name=>"effects",:type=>"radio",:value=>"grayscale", :onchange=>"grayscale()"}
+                Grayscale
+            %label.radio.inline{:for => "glow"}
+                %input{:id => "glowradio",:name=>"effects",:type=>"radio",:value=>"none", :onchange=>"glow()"}
+                Glow
+            %label.radio.inline{:for => "laplace"}
+                %input{:id => "laplaceradio",:name=>"effects",:type=>"radio",:value=>"none", :onchange=>"laplace()"}
+                Laplace
+            %label.radio.inline{:for => "none"}
+                %input{:id => "noneradio",:name=>"effects",:type=>"radio",:value=>"none", :onchange=>"none()"}
+                None
 
-        %br
-        %input.input-xlarge{:id => "content",:name=>"post[content]",:type=>"text",:placeholder=>"say something :D",:style => "width : 100%"}
-        %br
-        %label.radio.inline{:for => "sepia"}
-            %input{:id => "sepiaradio",:name=>"effects",:type=>"radio",:value=>"sepia",:onchange=>"sepia()"}
-            Sepia
-        %label.radio.inline{:for => "grayscale"}
-            %input{:id => "grayscaleradio",:name=>"effects",:type=>"radio",:value=>"grayscale", :onchange=>"grayscale()"}
-            Grayscale
-        %label.radio.inline{:for => "glow"}
-            %input{:id => "glowradio",:name=>"effects",:type=>"radio",:value=>"none", :onchange=>"glow()"}
-            Glow
-        %label.radio.inline{:for => "laplace"}
-            %input{:id => "laplaceradio",:name=>"effects",:type=>"radio",:value=>"none", :onchange=>"laplace()"}
-            Laplace
-        %label.radio.inline{:for => "none"}
-            %input{:id => "noneradio",:name=>"effects",:type=>"radio",:value=>"none", :onchange=>"none()"}
-            None
+            %br
 
-        %br
-
-        %button.btn.btn-shinyblue#submit{:type =>"button", :style => "margin-top:30px"} Post It to your Instagroom page and share!
+            %button.btn.btn-shinyblue#submit{:type =>"button", :style => "margin-top:30px"} Post It to your Instagroom page and share!
