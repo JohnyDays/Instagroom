@@ -1,13 +1,16 @@
 .row-fluid{ :style => "margin:auto;"}
     %span{:style => "display:inline-block"}
         .row
-            %h5{:style => "display:inline-block"}= link_to post.user.username, user_posts_path(post.user)
+            %h5{:style => "display:inline-block"}= link_to user.username, user_posts_path(user)
             -if post.from_id
                 %i.icon-small.icon-refresh{:style => "display:inline-block"}
                 %h5{:style => "display:inline-block"}=link_to User.find(post.from_id).username, user_posts_path(User.find(post.from_id))
             -if post.source_id && post.source_id != post.user_id
                 %h5.offset4{:style => "display:inline-block"} Source:
                 %h5{:style => "display:inline-block"}= link_to User.find(post.source_id).username, user_posts_path(User.find(post.source_id))
+            -if authenticateOwnership(user.id)
+                = link_to user_post_path(user,post), :method => :delete do
+                    %i.icon.icon-trash{:style => "float:right"}
         %li.thumbnail
             %a.thumbnail
                 %img{ :src => "/uploads/#{@user.username}/#{post.id}/image",:style => "display:block; max-width:600px"}

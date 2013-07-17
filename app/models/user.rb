@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   attr_accessible :email, :password, :posts, :token, :username
   has_many :posts
+  has_many :follows
+  has_many :followers, :through => :follows
   validates :email,:password,:username, :presence => true
  before_create :generate_token
   def generate_token

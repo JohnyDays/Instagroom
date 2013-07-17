@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  helper_method :authenticateOwnership
   def authenticate
     unless @currentuser
     if cookies[:user_token]
@@ -13,11 +14,10 @@ end
 def currentuser
  User.find_by_token(cookies[:user_token])
 end
-  def authenticateOwnership(userid)
-    authenticate
-   if @currentuser.id != userid
-     flash[:error] = "You do not have permission to acess this."
-        redirect_to "root" # or wherever you want to redirect to
+def authenticateOwnership(userid)
+   if currentuser.id != userid
+     return false
   end
+  return true
 end
 end

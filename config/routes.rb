@@ -1,4 +1,7 @@
 Instagroom::Application.routes.draw do
+  resources :follows
+
+
   resources :users do
     resources :posts
   end

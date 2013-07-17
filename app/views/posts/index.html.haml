@@ -3,6 +3,11 @@
     {
        $("a.thumbnail img").click(fullscreen)
     });
+- flash.each do |key, value|
+    .alert{ :class => "alert-#{key}" }
+        %button.close{ :onclick => "dismiss(this)" } x
+        %strong
+            = value
 .row{:style => "display:inline-block"}
     %h1.page-header.offset4{:style => "display:inline-block"}= @user.username
     = link_to "Post", new_user_post_path(@user), :style => "display:inline-block", :class => "btn btn-info offset5"
@@ -11,6 +16,6 @@
     %ul.thumbnails
         - @posts.each do |post|
             .well
-                = render partial: "post", object: post
+                = render  "post", :post => post, :user => @user
             %hr
 

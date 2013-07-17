@@ -31,8 +31,13 @@ end
     File.open(Rails.root.join('public', 'uploads',currentuser.username,@post.id.to_s,"image"),"wb") do |file|
     file.write(@uploaded_io.read)
   end
+end
   def repost
 
   end
+  def destroy
+    Post.find(params[:id]).delete
+    flash[:error] = "Your post has been deleted"
+  redirect_to user_posts_path(@user)
   end
 end
