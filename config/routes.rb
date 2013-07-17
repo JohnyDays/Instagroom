@@ -5,6 +5,7 @@ Instagroom::Application.routes.draw do
   resources :users do
     resources :posts
   end
+  delete '/follows', to: "Follows#destroy"
 post 'login', to: "Users#login", as:'login'
 match 'logout' , to: 'Users#logout', as: 'logout'
 root :to => "users#index"

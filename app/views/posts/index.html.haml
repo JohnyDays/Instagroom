@@ -12,6 +12,11 @@
     %h1.page-header.offset4{:style => "display:inline-block"}= @user.username
     = link_to "Post", new_user_post_path(@user), :style => "display:inline-block", :class => "btn btn-info offset5"
     = link_to "Logout",logout_path, :style => "display:inline-block", :class => "btn btn-danger "
+    -unless authenticateOwnership(@user.id)
+        -if isUserFollowing(@user)
+            = link_to "Unfollow", follows_path(:following_id => @user.id), :method => :delete, :class => "btn btn-shinyblue"
+        -else
+            = link_to "Follow", follows_path(:following_id => @user.id), :method => :post, :class => "btn btn-shinyblue"
 %section#posts
     %ul.thumbnails
         - @posts.each do |post|
