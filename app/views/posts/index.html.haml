@@ -31,4 +31,9 @@
             - @posts.each do |post|
                 = render  "post", :post => post, :user => @user
                 %hr
+    -if @posts.empty?
+        -unless authenticateOwnership(@user.id)
+            %p= "This person hasn't posted anything yet :/"
+        -else
+            %p= "You haven't posted anything yet, click the button above to make your first post!"
 
