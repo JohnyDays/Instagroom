@@ -21,6 +21,7 @@ end
     @post.user_id = @user.id
   end
   def create
+    if(params[:file].size>0)
     @post = Post.new(params[:post])
     @post.user_id = currentuser.id
     @post.source_id = currentuser.id
@@ -30,6 +31,7 @@ end
     Dir.mkdir(Rails.root.join('public', 'uploads',currentuser.username,@post.id.to_s))
     File.open(Rails.root.join('public', 'uploads',currentuser.username,@post.id.to_s,"image"),"wb") do |file|
     file.write(@uploaded_io.read)
+  end
   end
 end
   def repost

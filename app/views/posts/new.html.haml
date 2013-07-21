@@ -34,6 +34,7 @@
      $(document).ready(function()
      {
        $("#submit").click(function() {
+       this.disabled = true
        var oMyForm = new FormData($("#new_post")[0]);
         var oReq = new XMLHttpRequest();
         if($('canvas')[0]){
@@ -51,6 +52,7 @@
         var oBlob = new Blob([oReq.response], { type: "text/html"})
         objectURL = window.URL.createObjectURL(oBlob);
         console.log(objectURL)
+        window.location = $("#posts")[0].href
         }
         oReq.send(oMyForm);
         return false;
@@ -59,8 +61,9 @@
         });
 #container
     .row{:style => "display:inline-block"}
-        %h1.page-header.offset4{:style => "display:inline-block"}= "Post something to Instagroom"
-        = link_to "Posts", user_posts_path(@user), :style => "display:inline-block", :class => "btn btn-greenish offset5"
+        %h1.page-header.offset4{:style => "display:inline-block"}= "Post something to"
+        %img{src: "/assets/instagroom logo.png", style: "height:70px;margin-bottom:24px"}
+        = link_to "Posts", user_posts_path(@user), :style => "display:inline-block", :class => "btn btn-greenish offset5",:id => "posts"
         = link_to "Logout",logout_path, :style => "display:inline-block", :class => "btn btn-danger "
     = form_for @post,url: {action: "create"},:html => { :multipart => true} do |f|
         %fieldset

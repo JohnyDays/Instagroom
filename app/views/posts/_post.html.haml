@@ -1,7 +1,7 @@
 .well{:style => "position:relative"}
     -if authenticateOwnership(user.id)
         = link_to user_post_path(user,post), :method => :delete do
-            %i.icon.icon-trash{:style => "position:absolute;top:5px;right:5px;z-index:10"}
+            %i.icon-large.icon-trash{:style => "position:absolute;top:10px;right:10px;"}
     .a
         %span{:style => "display:inline-block;position:relative"}
             .row
