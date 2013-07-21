@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   has_many :posts
   has_many :follows
   has_many :followings, :through => :follows
+  has_many :activities
   validates :email,:password,:username, :presence => true
  before_create :generate_token
   def generate_token

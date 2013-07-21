@@ -1,0 +1,3 @@
+#container
+    -Follow.where("following_id = #{@user.id}").each do |f|
+        =link_to f.user.username, f.user
