@@ -1,7 +1,4 @@
 Instagroom::Application.routes.draw do
-  resources :activities
-
-
   resources :follows
   match '/users/:id',to: redirect("/users/%{id}/posts")
 
