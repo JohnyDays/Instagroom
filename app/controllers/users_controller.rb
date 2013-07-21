@@ -1,6 +1,13 @@
 class UsersController < ApplicationController
 def index
   @currentuser = currentuser
+  if @currentuser
+    ids = []
+    @currentuser.followings.each do |f|
+    ids << f.id
+    @posts = Post.where("user_id in (?)", ids)
+  end
+  end
 end
 def create
 @user = User.new(params[:user])
@@ -10,9 +17,7 @@ def create
       format.json{render @user.to_json}
 
     end
-
 end
-
 def login
     @user = User.find_by_username(params[:username])
     if  @user

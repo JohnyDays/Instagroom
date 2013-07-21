@@ -10,13 +10,10 @@
     -unless @currentuser
         = render partial: 'login'
     -else
-        %p.lead
-            Hi
-            %strong
-                = @currentuser.username
-            you probably want to go to your
-            = link_to("posts", user_posts_path(@currentuser))
-            Or maybe
-            = link_to("logout",logout_path)
+        %section#posts
+            %ul.thumbnails
+                - @posts.each do |post|
+                    = render  "posts/post", :post => post, :user => @currentuser
+                    %hr
 
 
