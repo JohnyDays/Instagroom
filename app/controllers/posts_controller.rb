@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_filter :authenticate
   def get_user
     if params[:username]
-      @user = User.find_by_username params[:username]
+      @user = User.find_by_username params[:username].downcase
     else
       @user = User.find params[:user_id]
     end

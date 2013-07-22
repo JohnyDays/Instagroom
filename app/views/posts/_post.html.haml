@@ -1,20 +1,20 @@
 .well{:style => "position:relative"}
+    = link_to repost_path(:post =>post), :method => :post do
+        %i.icon-large.icon-retweet{:style => "position:absolute;top:10px;right:30px;"}
     -if authenticateOwnership(User.find(post.user_id).id)
-        = link_to repost_path(:post =>post), :method => :post do
-            %i.icon-large.icon-retweet{:style => "position:absolute;top:10px;right:30px;"}
         = link_to user_post_path(User.find(post.user_id),post), :method => :delete do
             %i.icon-large.icon-trash{:style => "position:absolute;top:10px;right:10px;"}
     .a
         %span{:style => "display:inline-block;position:relative"}
             .row
-                %h5{:style => "display:inline-block"}= link_to User.find(post.user_id).username, User.find(post.user_id)
+                %h5{:style => "display:inline-block"}= link_to User.find(post.user_id).username.capitalize, User.find(post.user_id)
                 -if post.from_id
                     %i.icon-small.icon-refresh{:style => "display:inline-block"}
-                    %h5{:style => "display:inline-block"}=link_to User.find(post.from_id).username, User.find(post.from_id)
+                    %h5{:style => "display:inline-block"}=link_to User.find(post.from_id).username.capitalize, User.find(post.from_id)
                 %small=time_ago_in_words(post.created_at ) +" ago"
                 -if post.source_id && post.source_id != post.user_id
                     %h5.offset1{:style => "display:inline-block"} Source:
-                    %h5{:style => "display:inline-block"}= link_to User.find(post.source_id).username, User.find(post.source_id)
+                    %h5{:style => "display:inline-block"}= link_to User.find(post.source_id).username.capitalize, User.find(post.source_id)
 
             %li.thumbnail
                 %a.thumbnail

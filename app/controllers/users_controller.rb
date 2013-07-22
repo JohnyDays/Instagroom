@@ -12,14 +12,15 @@ class UsersController < ApplicationController
   end
   def create
     @user = User.new(params[:user])
-    @user.save
-    respond_to do |format|
-      format.html
-      format.json{render @user.to_json}
+    if @user.save
+      redirect_to root_path
+    else
+      flash[:error] = "There was an error registering, Sorry!"
+      redirect_to root_path
     end
   end
   def login
-    @user = User.find_by_username(params[:username])
+    @user = User.find_by_username(params[:username].downcase)
     if  @user
       if @user.password == params[:password]
         cookies.permanent[:user_token] = @user.token if params[:remember]

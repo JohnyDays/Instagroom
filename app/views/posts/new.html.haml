@@ -59,11 +59,18 @@
        });
        $("#imagepreview").click(fullscreen)
         });
+.menu{:style => "position:fixed;right:11px;top:20px"}
+    .ul{:style => "-webkit-font-smoothing:antialiased;list-style-type:none;border:1px solid rgba(0,0,0,.18);border-radius:6px;background-color:inherited"}
+        %li{:style => "-webkit-box-shadow:0 0 2px rgba(0,0,0,.25) inset;-box-shadow:0 0 2px rgba(0,0,0,.25) inset"}
+            =link_to "Followers", user_followers_path(@user), :class => "menu-link"
+        %li{:style => "-webkit-box-shadow:0 0 2px rgba(0,0,0,.25) inset;-box-shadow:0 0 2px rgba(0,0,0,.25) inset"}
+            =link_to "Following", user_following_path(@user), :class => "menu-link"
 #container
     .row{:style => "display:inline-block"}
-        %h1.page-header.offset4{:style => "display:inline-block"}= "Post something to"
-        %img{src: "/assets/instagroom logo.png", style: "height:70px;margin-bottom:24px"}
-        = link_to "Posts", user_posts_path(@user), :style => "display:inline-block", :class => "btn btn-greenish offset5",:id => "posts"
+        %h1.page-header.offset4{:style => "display:inline-block"}= "Post something!"
+        =link_to root_path do
+            %img{:src => "/assets/instagroom logo.png",:style => "position:fixed;left:10px; top:10px;width:250px"}
+        = link_to "Your Posts", user_posts_path(@user), :style => "display:inline-block", :class => "btn btn-greenish offset5",:id => "posts"
         = link_to "Logout",logout_path, :style => "display:inline-block", :class => "btn btn-danger "
     = form_for @post,url: {action: "create"},:html => { :multipart => true} do |f|
         %fieldset
