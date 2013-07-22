@@ -4,7 +4,7 @@
        $("a.thumbnail img").click(fullscreen)
     });
 -if @currentuser
-    .menu{:style => "position:fixed;right:30px;top:100px"}
+    .menu{:style => "position:fixed;right:11px;top:20px"}
         .ul{:style => "-webkit-font-smoothing:antialiased;list-style-type:none;border:1px solid rgba(0,0,0,.18);border-radius:6px;background-color:inherited"}
             %li{:style => "-webkit-box-shadow:0 0 2px rgba(0,0,0,.25) inset;-box-shadow:0 0 2px rgba(0,0,0,.25) inset"}
                 =link_to "Followers", user_followers_path(@currentuser), :class => "menu-link"
@@ -22,14 +22,14 @@
     -unless @currentuser
         = render partial: 'login'
     -else
-    .row{:style => "margin-bottom:20px" }
-        = link_to "Post Something", new_user_post_path(@currentuser), :style => "width:25%", :class => "btn btn-success"
-        = link_to "Your Posts", @currentuser, :style => "width:25%", :class => "btn btn-info"
-        = link_to "Logout",logout_path, :style => "width:25%", :class => "btn btn-danger "
-    %section#posts
-        %ul.thumbnails
-            - @posts.each do |post|
-                = render  "posts/post", :post => post, :user => @currentuser
-                %hr
+        .row{:style => "margin-bottom:20px" }
+            = link_to "Post Something", new_user_post_path(@currentuser), :style => "width:25%", :class => "btn btn-success"
+            = link_to "Your Posts", @currentuser, :style => "width:25%", :class => "btn btn-info"
+            = link_to "Logout",logout_path, :style => "width:25%", :class => "btn btn-danger "
+        %section#posts
+            %ul.thumbnails
+                - @posts.each do |post|
+                    = render  "posts/post", :post => post, :user => @currentuser
+                    %hr
 
 

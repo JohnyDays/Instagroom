@@ -1,5 +1,7 @@
 .well{:style => "position:relative"}
     -if authenticateOwnership(User.find(post.user_id).id)
+        = link_to repost_path(:post =>post), :method => :post do
+            %i.icon-large.icon-retweet{:style => "position:absolute;top:10px;right:30px;"}
         = link_to user_post_path(User.find(post.user_id),post), :method => :delete do
             %i.icon-large.icon-trash{:style => "position:absolute;top:10px;right:10px;"}
     .a

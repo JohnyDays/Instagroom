@@ -1,24 +1,24 @@
 class UsersController < ApplicationController
-def index
-  @currentuser = currentuser
-  if @currentuser
-    ids = []
-    @currentuser.followings.each do |f|
-    ids << f.id
-    @posts = Post.where("user_id in (?)", ids)
+  def index
+    @currentuser = currentuser
+    if @currentuser
+      ids = []
+      ids << @currentuser.id
+      @currentuser.followings.each do |f|
+        ids << f.id
+      end
+        @posts = Post.where("user_id in (?)", ids).order("created_at DESC");
+    end
   end
-  end
-end
-def create
-@user = User.new(params[:user])
-@user.save
+  def create
+    @user = User.new(params[:user])
+    @user.save
     respond_to do |format|
       format.html
       format.json{render @user.to_json}
-
     end
-end
-def login
+  end
+  def login
     @user = User.find_by_username(params[:username])
     if  @user
       if @user.password == params[:password]
@@ -28,18 +28,18 @@ def login
       end
     end
     if @user
-    redirect_to user_posts_path(@user)
+      redirect_to user_posts_path(@user)
     else
-    flash[:error] = "Your username or password is wrong, sorry!"
+      flash[:error] = "Your username or password is wrong, sorry!"
+      redirect_to users_path
+    end
+  end
+  def logout
+    if @currentuser or cookies[:user_token]
+      cookies.delete :user_token
+      @currentuser = nil
+    end
+    flash[:success] = "You have been logged out"
     redirect_to users_path
   end
-  end
-def logout
-    if @currentuser or cookies[:user_token]
-    cookies.delete :user_token
-    @currentuser = nil
-  end
-  flash[:success] = "You have been logged out"
-  redirect_to users_path
-end
 end
