@@ -28,7 +28,7 @@ class UsersController < ApplicationController
       end
     end
     if @user
-      redirect_to user_posts_path(@user)
+      redirect_to root_path
     else
       flash[:error] = "Your username or password is wrong, sorry!"
       redirect_to users_path
@@ -40,6 +40,6 @@ class UsersController < ApplicationController
       @currentuser = nil
     end
     flash[:success] = "You have been logged out"
-    redirect_to users_path
+    redirect_to root_path
   end
 end

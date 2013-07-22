@@ -13,7 +13,7 @@
                     %h5{:style => "display:inline-block"}=link_to User.find(post.from_id).username, User.find(post.from_id)
                 %small=time_ago_in_words(post.created_at ) +" ago"
                 -if post.source_id && post.source_id != post.user_id
-                    %h5.offset2{:style => "display:inline-block"} Source:
+                    %h5.offset1{:style => "display:inline-block"} Source:
                     %h5{:style => "display:inline-block"}= link_to User.find(post.source_id).username, User.find(post.source_id)
 
             %li.thumbnail
