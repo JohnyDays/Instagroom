@@ -1,4 +1,5 @@
 #container
+    %h5= "You are following these people " + @user.username.capitalize
     -@user.followings.each do |f|
         =link_to f.username, user_posts_path(f)
         %br

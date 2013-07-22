@@ -1,5 +1,5 @@
 #container
-    %h1= 'These people are following you '+  @user.username
+    %h5= 'These people are following you '+  @user.username.capitalize
     %br
     %ul
         -Follow.where("following_id = #{@user.id}").each do |f|
