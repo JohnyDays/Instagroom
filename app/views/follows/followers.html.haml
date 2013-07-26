@@ -1,6 +1,5 @@
 #container
     %h5= 'These people are following you '+  @user.username.capitalize
     %br
-    %ul
         -Follow.where("following_id = #{@user.id}").each do |f|
-            %li=link_to f.user.username, f.user
+            =link_to f.user.username, f.user

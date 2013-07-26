@@ -1,9 +1,82 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+---
+Post_1:
+  id: 2
+  content: The mother of ferrets hahaha
+  user_id: 1
+  source_id: 1
 
-one:
-  content: MyString
-  user: 
+---
+Post_2:
+  id: 9
+  content: 'Amazing artwork, loyal to the lore too!'
+  user_id: 1
+  source_id: 1
 
-two:
-  content: MyString
-  user: 
+---
+Post_3:
+  id: 10
+  content: I love you totoro!
+  user_id: 1
+  source_id: 1
+
+---
+Post_4:
+  id: 11
+  content: Puppy gifs awwww so cute
+  user_id: 1
+  source_id: 1
+
+---
+Post_5:
+  id: 12
+  content: Why you looking at me like that?
+  user_id: 2
+  source_id: 2
+
+---
+Post_6:
+  id: 13
+  content: Praying cat <3
+  user_id: 2
+  source_id: 2
+
+---
+Post_7:
+  id: 14
+  content: Puppy gifs awwww so cute
+  user_id: 3
+  source_id: 1
+  from_id: 1
+
+---
+Post_8:
+  id: 15
+  content: 'Amazing artwork, loyal to the lore too!'
+  user_id: 3
+  source_id: 1
+  from_id: 1
+
+---
+Post_9:
+  id: 16
+  content: The mother of ferrets hahaha
+  user_id: 3
+  source_id: 1
+  from_id: 1
+
+---
+Post_10:
+  id: 17
+  content: Puppy gifs awwww so cute
+  user_id: 2
+  source_id: 1
+  from_id: 3
+
+---
+Post_11:
+  id: 18
+  content: 'Amazing artwork, loyal to the lore too!'
+  user_id: 2
+  source_id: 1
+  from_id: 3
+

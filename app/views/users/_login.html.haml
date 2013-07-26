@@ -7,7 +7,7 @@
             %span{:style => "display:block; "}
                 Remember me?
                 %input{:type => "checkbox", :name =>"remember"}
-            %a Forgot your password?
+            %a{:style => "visibility:hidden"} Forgot your password?
             %button.btn.btn-info{type: "submit"} Login
     .span3.well
         %form{ action: "/users", method: "post"}

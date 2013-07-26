@@ -13,6 +13,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
+      flash[:success] = "You have been sucessfully registered"
       redirect_to root_path
     else
       flash[:error] = "There was an error registering, Sorry!"
